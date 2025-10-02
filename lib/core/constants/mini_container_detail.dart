@@ -5,7 +5,7 @@ final List<MiniContainerDetail> miniContainerContent = [
   MiniContainerDetail(
     iconPath: "assets/home/time.png",
     title: "Namaz saatleri",
-    route: "/namaz"
+    route: "/namaz_saatleri"
     
   ),
   MiniContainerDetail(

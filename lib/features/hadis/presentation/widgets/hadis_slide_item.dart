@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunnet_app/core/constants/hadis.dart';
 import '../../../../core/themes/app_colors.dart';
-import '../../../../core/themes/utils/font_size.dart';
+import '../../../../core/utils/font_size.dart';
 import 'hadis_slide_actions.dart';
 
 

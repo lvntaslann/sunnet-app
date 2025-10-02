@@ -10,7 +10,11 @@ dependencies:
   carousel_slider: ^5.1.1
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_dotenv: ^6.0.0
   flutter_screenutil: ^5.9.3
+  http: ^1.5.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -24,3 +28,4 @@ flutter:
     - assets/abdest/
     - assets/namaz/
     - assets/bottom_nav_bar/
+    - .env

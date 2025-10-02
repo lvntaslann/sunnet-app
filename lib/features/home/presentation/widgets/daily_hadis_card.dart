@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/themes/app_colors.dart';
-import '../../../../core/themes/utils/font_size.dart';
+import '../../../../core/utils/font_size.dart';
 
 class DailyHadisCard extends StatelessWidget {
   const DailyHadisCard({Key? key}) : super(key: key);
