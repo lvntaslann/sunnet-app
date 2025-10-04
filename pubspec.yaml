@@ -28,4 +28,5 @@ flutter:
     - assets/abdest/
     - assets/namaz/
     - assets/bottom_nav_bar/
+    - assets/profile/
     - .env
