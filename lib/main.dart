@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunnet_app/core/routes/app_routes.dart';
+import 'package:sunnet_app/features/kuran/data/services/kuran_services.dart';
+import 'package:sunnet_app/features/kuran/logic/cubit/kuran_cubit.dart';
 import 'package:sunnet_app/features/prayer-times/data/services/prayer_time_services.dart';
 import 'package:sunnet_app/features/prayer-times/data/services/weather_services.dart';
 import 'package:sunnet_app/features/prayer-times/logic/cubit/prayer_time_cubit.dart';
@@ -13,7 +15,6 @@ import 'features/main_page_controller.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-
   runApp(
     ScreenUtilInit(
       splitScreenMode: true,
@@ -36,6 +37,10 @@ Future<void> main() async {
                   baseUrl: dotenv.env['PRAYER_TIME_API_URL'] ?? "",
                 ),
               ),
+            ),
+
+            BlocProvider<KuranCubit>(
+              create: (_) => KuranCubit(KuranServices()),
             ),
           ],
           child: const MainApp(),
@@ -63,42 +68,37 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
-Future<void> _loadData() async {
-  final prayerCubit = context.read<PrayerTimeCubit>();
-  final weatherCubit = context.read<WeatherCubit>();
-
-  await Future.wait([
-    prayerCubit.loadFromCache(),
-    weatherCubit.loadFromCache(),
-  
-  ]);
-    debugPrint("localden yüklendi");
-  if (await FetchTimeUtil.shouldFetchData()) {
+  Future<void> _loadData() async {
+    final prayerCubit = context.read<PrayerTimeCubit>();
+    final weatherCubit = context.read<WeatherCubit>();
     await Future.wait([
-      prayerCubit.getPrayerTimes(
-        lat: 41.0082,
-        lng: 28.9784,
-        date: DateTime.now().toIso8601String(),
-      ),
-      weatherCubit.getWeather(41.0082, 28.9784),
-      
+      prayerCubit.loadFromCache(),
+      weatherCubit.loadFromCache(),
     ]);
-    await FetchTimeUtil.updateFetchTime();
-    debugPrint("veri çekildi");
-  }
+    debugPrint("localden yüklendi");
+    if (await FetchTimeUtil.shouldFetchData()) {
+      await Future.wait([
+        prayerCubit.getPrayerTimes(
+          lat: 41.0082,
+          lng: 28.9784,
+          date: DateTime.now().toIso8601String(),
+        ),
+        weatherCubit.getWeather(41.0082, 28.9784),
+      ]);
+      await FetchTimeUtil.updateFetchTime();
+      debugPrint("veri çekildi");
+    }
 
-  setState(() {
-    _isLoading = false;
-  });
-}
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
       return const MaterialApp(
-        home: Scaffold(
-          body: Center(child: CircularProgressIndicator()),
-        ),
+        home: Scaffold(body: Center(child: CircularProgressIndicator())),
       );
     }
 

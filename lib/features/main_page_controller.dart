@@ -3,6 +3,7 @@ import 'package:sunnet_app/core/themes/app_colors.dart';
 import 'package:sunnet_app/core/widgets/custom_app_bar.dart';
 import 'package:sunnet_app/features/hadis/presentation/page/hadis_page.dart';
 import 'package:sunnet_app/features/home/presentation/page/home_page.dart';
+import 'package:sunnet_app/features/kuran/presentation/pages/kuran_page.dart';
 import 'package:sunnet_app/features/profile/presentation/page/profile_page.dart';
 import '../core/widgets/custom_bottom_nav_bar.dart';
 
@@ -19,14 +20,14 @@ class _MainPageControllerState extends State<MainPageController> {
   final List<Widget> pages = const [
     HomePage(),
     HadisPage(),
-    HomePage(),
+    KuranPage(),
     ProfilePage(),
   ];
 
   final List<String> pageTitles = [
     "Anasayfa",
     "Hadisler",
-    "İçerikler",
+    "Kuran",
     "Profil",
   ];
 
