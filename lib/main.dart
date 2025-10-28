@@ -1,8 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sunnet_app/core/routes/app_routes.dart';
+import 'package:sunnet_app/features/auth/data/services/user_services.dart';
+import 'package:sunnet_app/features/auth/logic/cubit/user_cubit.dart';
+import 'package:sunnet_app/features/auth/presentation/pages/login_page.dart';
+import 'package:sunnet_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:sunnet_app/features/kuran/data/services/kuran_services.dart';
 import 'package:sunnet_app/features/kuran/logic/cubit/kuran_cubit.dart';
 import 'package:sunnet_app/features/prayer-times/data/services/prayer_time_services.dart';
@@ -11,9 +16,12 @@ import 'package:sunnet_app/features/prayer-times/logic/cubit/prayer_time_cubit.d
 import 'package:sunnet_app/features/prayer-times/logic/cubit/weather_cubit.dart';
 import 'core/utils/fetch_time_util.dart';
 import 'features/main_page_controller.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  debugPrint("firebase başlatıldı");
   await dotenv.load(fileName: ".env");
   runApp(
     ScreenUtilInit(
@@ -41,6 +49,9 @@ Future<void> main() async {
 
             BlocProvider<KuranCubit>(
               create: (_) => KuranCubit(KuranServices()),
+            ),
+            BlocProvider<UserCubit>(
+              create: (_) => UserCubit(UserServices()),
             ),
           ],
           child: const MainApp(),
@@ -104,7 +115,7 @@ class _MainAppState extends State<MainApp> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MainPageController(),
+      home: const LoginPage(),
       onGenerateRoute: Routes.generateRoute,
     );
   }
