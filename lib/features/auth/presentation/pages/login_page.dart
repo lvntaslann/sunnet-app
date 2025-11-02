@@ -75,6 +75,9 @@ class LoginPage extends StatelessWidget {
                   }
 
                   context.read<UserCubit>().signIn(email, password);
+                 final data = context.read<UserCubit>().loadUserData();
+                 debugPrint(data.toString());
+
                 },
               ),
               SizedBox(height: 30),

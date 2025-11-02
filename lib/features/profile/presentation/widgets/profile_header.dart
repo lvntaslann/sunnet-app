@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/utils/font_size.dart';
+import '../../../auth/data/model/user_model.dart';
 
 class ProfileHeader extends StatelessWidget {
   final AppColors appColors;
+  final UserModel user;
 
-  const ProfileHeader({required this.appColors, Key? key}) : super(key: key);
+  const ProfileHeader({required this.appColors, required this.user, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class ProfileHeader extends StatelessWidget {
         ),
         SizedBox(height: 5.h),
         Text(
-          "Levent ASLAN",
+          user.name,
           style: TextStyle(
             color: appColors.profilePage.textColor,
             fontSize: AppFontSizes.s18,

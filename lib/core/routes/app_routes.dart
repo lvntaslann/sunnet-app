@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sunnet_app/features/auth/presentation/pages/login_page.dart';
+import 'package:sunnet_app/features/channels/presentation/pages/channel_page.dart';
+import 'package:sunnet_app/features/channels/presentation/pages/duty_page.dart';
 import 'package:sunnet_app/features/hadis/presentation/page/hadis_page.dart';
 import 'package:sunnet_app/features/main_page_controller.dart';
 import 'package:sunnet_app/features/prayer-times/presentation/page/prayer_page.dart';
@@ -15,6 +17,8 @@ class Routes {
   static const String namaz_saatleri = "/namaz_saatleri";
   static const String login = "/login";
   static const String signup = "/signup";
+  static const String channel = "/channel";
+  static const String duty = "/duty";
   static final Map<String, Widget> _routes = {
     "/": const MainPageController(),
     main: const MainPageController(),
@@ -23,6 +27,8 @@ class Routes {
     namaz_saatleri: const PrayerPage(),
     login: const LoginPage(),
     signup: const SignupPage(),
+    channel: const ChannelPage(),
+    duty: const DutyPage(),
   };
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final Widget? page = _routes[settings.name];

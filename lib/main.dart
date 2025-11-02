@@ -7,7 +7,6 @@ import 'package:sunnet_app/core/routes/app_routes.dart';
 import 'package:sunnet_app/features/auth/data/services/user_services.dart';
 import 'package:sunnet_app/features/auth/logic/cubit/user_cubit.dart';
 import 'package:sunnet_app/features/auth/presentation/pages/login_page.dart';
-import 'package:sunnet_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:sunnet_app/features/kuran/data/services/kuran_services.dart';
 import 'package:sunnet_app/features/kuran/logic/cubit/kuran_cubit.dart';
 import 'package:sunnet_app/features/prayer-times/data/services/prayer_time_services.dart';
@@ -15,7 +14,6 @@ import 'package:sunnet_app/features/prayer-times/data/services/weather_services.
 import 'package:sunnet_app/features/prayer-times/logic/cubit/prayer_time_cubit.dart';
 import 'package:sunnet_app/features/prayer-times/logic/cubit/weather_cubit.dart';
 import 'core/utils/fetch_time_util.dart';
-import 'features/main_page_controller.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
