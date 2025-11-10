@@ -28,7 +28,6 @@ class Routes {
     login: const LoginPage(),
     signup: const SignupPage(),
     channel: const ChannelPage(),
-    duty: const DutyPage(),
   };
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final Widget? page = _routes[settings.name];

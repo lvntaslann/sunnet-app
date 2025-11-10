@@ -7,6 +7,9 @@ import 'package:sunnet_app/core/routes/app_routes.dart';
 import 'package:sunnet_app/features/auth/data/services/user_services.dart';
 import 'package:sunnet_app/features/auth/logic/cubit/user_cubit.dart';
 import 'package:sunnet_app/features/auth/presentation/pages/login_page.dart';
+import 'package:sunnet_app/features/channels/data/services/duty_services.dart';
+import 'package:sunnet_app/features/channels/logic/cubit/channel_cubit.dart';
+import 'package:sunnet_app/features/channels/logic/cubit/duty_cubit.dart';
 import 'package:sunnet_app/features/kuran/data/services/kuran_services.dart';
 import 'package:sunnet_app/features/kuran/logic/cubit/kuran_cubit.dart';
 import 'package:sunnet_app/features/prayer-times/data/services/prayer_time_services.dart';
@@ -14,7 +17,10 @@ import 'package:sunnet_app/features/prayer-times/data/services/weather_services.
 import 'package:sunnet_app/features/prayer-times/logic/cubit/prayer_time_cubit.dart';
 import 'package:sunnet_app/features/prayer-times/logic/cubit/weather_cubit.dart';
 import 'core/utils/fetch_time_util.dart';
+import 'features/channels/data/services/channel_services.dart';
 import 'firebase_options.dart';
+import 'features/user_duties/logic/cubit/user_duty_cubit.dart';
+import 'features/user_duties/data/services/user_duty_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +56,17 @@ Future<void> main() async {
             ),
             BlocProvider<UserCubit>(
               create: (_) => UserCubit(UserServices()),
+            ),
+
+            BlocProvider<ChannelCubit>(
+              create: (_) => ChannelCubit(ChannelServices()),
+            ),
+
+            BlocProvider<DutyCubit>(
+              create: (_) => DutyCubit(DutyServices()),
+            ),
+            BlocProvider<UserDutyCubit>(
+              create: (_) => UserDutyCubit(UserDutyServices()),
             ),
           ],
           child: const MainApp(),

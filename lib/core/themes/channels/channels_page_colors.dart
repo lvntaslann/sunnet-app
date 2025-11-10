@@ -11,8 +11,8 @@ class ChannelsPageColors {
   Color get textColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFFFFFFF);
   Color get buttonBgColor => isDarkMode ? const Color(0xFF121212): const Color(0xFFECEBEB);
   Color get buttonIconColor => isDarkMode ? const Color(0xFF121212): const Color(0xFF22C55E);
-  Color get contentTitleColor => isDarkMode ? const Color(0xFF121212): const Color(0xFF152A1E);
-  Color get contentSubtitleColor => isDarkMode ? const Color(0xFF121212): const Color(0xFF545353);
+  Color get contentTitleColor => isDarkMode ? const Color(0xFF121212): const Color(0xFFFFFFFF);
+  Color get contentSubtitleColor => isDarkMode ? const Color(0xFF121212): const Color(0xFFE0E0E0);
   Color get createNewContentButtonColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFF1C8241);
   Color get createNewContentTextColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFFFFFFF);
   Color get switchPanelActiveColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFF2D764C);
@@ -26,4 +26,13 @@ class ChannelsPageColors {
   Color get dutyDetailBgColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFF22C55E);
   Color get dutyDetailBorderColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFF494949);
 
+  Color get addButtonIconBgColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFF979797);
+  Color get addButtonIconColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFFFFFFF);
+
+
+  Color get joinButtonBgColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFFFFFFF);
+  Color get joinButtonBorderColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFFFFFFF);
+  Color get joinButtonIconBgColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFECEBEB);
+  Color get joinButtonIconColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFFECEBEB);
+  Color get joinButtonTextColor => isDarkMode ? const Color(0xFF121212) : const Color(0xFF313131);
 }

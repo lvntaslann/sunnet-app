@@ -17,20 +17,17 @@ class ContentContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
         width: 330.w,
-        height: 100.h,
+        height: 110.h,
         decoration: BoxDecoration(
-          color: appColors.channelsPage.contentContainerBgColor,
+          color: appColors.channelsPage.contentContainerBgColor.withOpacity(0.08),
           borderRadius: BorderRadius.circular(15.r),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFFFFFFF),
-              blurRadius: 2.r,
-              offset: Offset(0, 4.h),
-            ),
-          ],
+                  border: Border.all(
+          color: appColors.channelsPage.joinButtonBorderColor.withOpacity(0.1),
+          width: 1,
+        ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -45,7 +42,7 @@ class ContentContainer extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(width: 90.w),
+                  SizedBox(width: 75.w),
                   Container(
                     width: 50.w,
                     height: 50.h,
@@ -67,7 +64,7 @@ class ContentContainer extends StatelessWidget {
                 ],
               ),
               Text(
-                subTitle,
+                "${subTitle} üye",
                 style: TextStyle(
                   fontSize: AppFontSizes.s16,
                   color: appColors.channelsPage.contentSubtitleColor,
